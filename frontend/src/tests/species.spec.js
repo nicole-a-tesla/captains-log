@@ -9,11 +9,12 @@ import Species from '../species'
 
 describe('Species', function() {
   beforeEach(function() {
+    let attributes = ['Shape shifting', 'telepathic']
     this.species = ReactTestUtils.renderIntoDocument(
        <Species 
           name={ 'Species Name' }
           quadrant={ 'Alpha' }
-          type={ 'Shape Shifting' }
+          attributes={ attributes }
           warpCapable={ 'false' }
           sightings={ 1 }
           onSightingsUpdate={ () => {} }
@@ -32,9 +33,10 @@ describe('Species', function() {
     expect(quadrant.innerHTML).to.equal('Alpha');
   })
 
-  it('displays type', function() {
-    let type = this.species.refs.type
-    expect(type.innerHTML).to.equal('Shape Shifting');
+  it('displays attributes', function() {
+    let attributes = this.species.refs.attributes
+    expect(attributes.innerHTML).to.contain('Shape shifting');
+    expect(attributes.innerHTML).to.contain('telepathic');
   })
 
   it('displays warp capability', function() {
@@ -79,7 +81,7 @@ describe('Species', function() {
        <Species 
           name={ 'Species Name' }
           quadrant={ 'Alpha' }
-          type={ 'Shape Shifting' }
+          attributes={ 'Shape Shifting' }
           warpCapable={ 'false' }
           sightings={ 1 }
           onSightingsUpdate={ spy }
@@ -102,7 +104,7 @@ describe('Species', function() {
        <Species 
           name={ 'Species Name' }
           quadrant={ 'Alpha' }
-          type={ 'Shape Shifting' }
+          attributes={ 'Shape Shifting' }
           warpCapable={ 'false' }
           sightings={ 1 }
           onSightingsUpdate={ ()=>{} }

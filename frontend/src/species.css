@@ -10,6 +10,10 @@ p {
   padding: 10px;
 }
 
+ul {
+  margin: 0px;
+  padding-left: 20px;
+}
 
 .button {
   border: none;

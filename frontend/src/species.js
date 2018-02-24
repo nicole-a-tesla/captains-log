@@ -32,8 +32,8 @@ class Species extends Component {
           ref='editSightings' 
           onSubmit={ this.onSubmit.bind(this) } >
 
-          <input type='number' 
-            value={ this.state.sightings } 
+          <input type='number'
+            value={ this.state.sightings }
             onChange={ this.handleSightingsChange.bind(this) } />
 
           <input 
@@ -59,12 +59,24 @@ class Species extends Component {
     )
   }
 
+  renderAttributes() {
+    let listItems = []
+    for (let attribute of this.props.attributes) {
+      listItems.push(<li>{ attribute }</li>)
+    }
+    return(
+      <ul>
+        { listItems }
+      </ul>
+    )
+  }
+
   render() {
     return(
       <div ref='species' className='species'>
         <p ref='speciesName' >{ this.props.name }</p>
         <p ref='quadrant' >{ this.props.quadrant }</p>
-        <p ref='type' >{ this.props.type }</p>
+        <p ref='attributes' >{ this.renderAttributes() }</p>
         <p ref='warpCapable' >{ this.props.warpCapable }</p>
         { this.renderSightings() }
         <button 

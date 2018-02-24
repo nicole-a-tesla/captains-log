@@ -15,7 +15,7 @@ class App extends Component {
         <Species 
           name={ 'Terrellian' }
           quadrant={ 'Alpha' }
-          type={ 'humanoidSpecies' }
+          attributes={ ['humanoid', 'telepathic'] }
           warpCapable={ 'false' }
           sightings={ 6 }
           onSightingsUpdate={ (e)=>{ console.log(e) } }
