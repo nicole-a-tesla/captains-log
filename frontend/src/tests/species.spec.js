@@ -17,6 +17,7 @@ describe('Species', function() {
           warpCapable={ 'false' }
           sightings={ 1 }
           onSightingsUpdate={ () => {} }
+          onRemove={ () => {} }
        />
     );
   })
@@ -51,6 +52,15 @@ describe('Species', function() {
     expect(edit.innerHTML).to.equal('Edit');
   })
 
+  it('displays remove button', function() {
+    let remove = this.species.refs.removeButton
+    expect(remove.innerHTML).to.equal('Remove');
+  })
+
+  it('editing is false by default', function() {
+    expect(this.species.state.editing).to.equal(false);
+  })
+
   it('sets edit to true if edit clicked', function() {
     let editButton = this.species.refs.editButton
     ReactTestUtils.Simulate.click(editButton)
@@ -73,6 +83,7 @@ describe('Species', function() {
           warpCapable={ 'false' }
           sightings={ 1 }
           onSightingsUpdate={ spy }
+          onRemove={ ()=>{} }
        />
     );
 
@@ -83,6 +94,26 @@ describe('Species', function() {
     ReactTestUtils.Simulate.submit(form)
 
     expect(spy.calledWith(1)).to.equal(true);
+  })
+
+  it('calls remove callback on remove click', function() {
+    let spy = sinon.spy()
+    let species = ReactTestUtils.renderIntoDocument(
+       <Species 
+          name={ 'Species Name' }
+          quadrant={ 'Alpha' }
+          type={ 'Shape Shifting' }
+          warpCapable={ 'false' }
+          sightings={ 1 }
+          onSightingsUpdate={ ()=>{} }
+          onRemove={ spy }
+       />
+    );
+
+    let removeButton = species.refs.removeButton
+    ReactTestUtils.Simulate.click(removeButton)
+
+    expect(spy.called).to.equal(true);
   })
 })
 

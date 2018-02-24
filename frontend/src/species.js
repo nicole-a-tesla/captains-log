@@ -58,6 +58,11 @@ class Species extends Component {
         <button ref='editButton' onClick={ this.handleEditClick.bind(this) }>
           Edit
         </button>
+        <button 
+          ref='removeButton' 
+          onClick={ this.props.onRemove.bind(this) }>
+            Remove
+        </button>
       </div>
     )
   }

@@ -19,6 +19,7 @@ class App extends Component {
           warpCapable={ 'false' }
           sightings={ 6 }
           onSightingsUpdate={ (e)=>{ console.log(e) } }
+          onRemove={ ()=>{ console.log('Removed!') } }
         />
       </div>
     );
