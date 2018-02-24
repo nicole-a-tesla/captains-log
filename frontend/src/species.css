@@ -6,8 +6,12 @@
   display: inline-flex;
 }
 
-p {
+div {
   padding: 10px;
+}
+
+div.sightings {
+  padding: 0px;
 }
 
 ul {
