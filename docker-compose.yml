@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  db:
+    build: ./database
+  backend:
+    build: ./backend
+    command: 'flask run --host=0.0.0.0'
+    environment:
+      - FLASK_APP=/usr/src/app/backend/__init__.py
+      - FLASK_DEBUG=1
+    volumes:
+      - ./backend:/usr/src/app
+    ports:
+      - "8000:5000"
+    depends_on: 
+      - db
+    stdin_open: true
+    tty: true
+  frontend: 
+    build: ./frontend
+    command: yarn start
+    volumes: 
+      - ./frontend:/usr/src/app
+    ports: 
+      - "8888:3000"
+    depends_on:
+      - backend
+    environment: 
+      - PATH=$PATH:./node_modules/.bin

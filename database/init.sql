@@ -1,0 +1,3 @@
+CREATE DATABASE stocks;
+GRANT ALL PRIVILEGES ON DATABASE stocks TO postgres;
+
