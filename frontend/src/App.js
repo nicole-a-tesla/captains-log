@@ -14,7 +14,7 @@ class App extends Component {
         </header>
         <Species 
           name={ 'Terrellian' }
-          quadrant={ 'Alpha' }
+          origin={ 'Unknown, Alpha Quadrant' }
           attributes={ ['humanoid', 'telepathic'] }
           warpCapable={ 'false' }
           sightings={ 6 }

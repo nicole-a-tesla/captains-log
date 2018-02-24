@@ -13,7 +13,7 @@ describe('Species', function() {
     this.species = ReactTestUtils.renderIntoDocument(
        <Species 
           name={ 'Species Name' }
-          quadrant={ 'Alpha' }
+          origin={ 'Alpha' }
           attributes={ attributes }
           warpCapable={ 'false' }
           sightings={ 1 }
@@ -28,9 +28,9 @@ describe('Species', function() {
     expect(name.innerHTML).to.equal('Species Name');
   })
 
-  it('displays quadrant', function() {
-    let quadrant = this.species.refs.quadrant
-    expect(quadrant.innerHTML).to.equal('Alpha');
+  it('displays origin', function() {
+    let origin = this.species.refs.origin
+    expect(origin.innerHTML).to.equal('Alpha');
   })
 
   it('displays attributes', function() {
@@ -80,7 +80,7 @@ describe('Species', function() {
     let species = ReactTestUtils.renderIntoDocument(
        <Species 
           name={ 'Species Name' }
-          quadrant={ 'Alpha' }
+          origin={ 'Alpha' }
           attributes={ 'Shape Shifting' }
           warpCapable={ 'false' }
           sightings={ 1 }
@@ -103,7 +103,7 @@ describe('Species', function() {
     let species = ReactTestUtils.renderIntoDocument(
        <Species 
           name={ 'Species Name' }
-          quadrant={ 'Alpha' }
+          origin={ 'Alpha' }
           attributes={ 'Shape Shifting' }
           warpCapable={ 'false' }
           sightings={ 1 }

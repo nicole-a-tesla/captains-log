@@ -75,7 +75,7 @@ class Species extends Component {
     return(
       <div ref='species' className='species'>
         <p ref='speciesName' >{ this.props.name }</p>
-        <p ref='quadrant' >{ this.props.quadrant }</p>
+        <p ref='origin' >{ this.props.origin }</p>
         <p ref='attributes' >{ this.renderAttributes() }</p>
         <p ref='warpCapable' >{ this.props.warpCapable }</p>
         { this.renderSightings() }
