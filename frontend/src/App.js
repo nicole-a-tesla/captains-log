@@ -2,7 +2,24 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import Species from './species'
+import SpeciesList from './species-list'
+
+var species = [
+  {
+    name: 'Terrellian',
+    origin: 'Unknown, Alpha Quadrant',
+    attributes: ['humanoid'],
+    warpCapable: 'false',
+    sightings: 2
+  },
+  {
+    name: 'Vulcan',
+    origin: 'Vulcan, Alpha Quadrant',
+    warpCapable: 'true',
+    attributes: ['humanoid','telepathic'],
+    sightings: 400
+  }
+]
 
 class App extends Component {
   render() {
@@ -12,12 +29,8 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Captain's Log 💫  🚀  👽 </h1>
         </header>
-        <Species 
-          name={ 'Terrellian' }
-          origin={ 'Unknown, Alpha Quadrant' }
-          attributes={ ['humanoid', 'telepathic'] }
-          warpCapable={ 'false' }
-          sightings={ 6 }
+        <SpeciesList
+          species={ species }
           onSightingsUpdate={ (e)=>{ console.log(e) } }
           onRemove={ ()=>{ console.log('Removed!') } }
         />
