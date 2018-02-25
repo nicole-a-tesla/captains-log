@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Species from './species'
+import './species-list.css';
 
 
 class SpeciesList extends Component {
@@ -24,6 +25,13 @@ class SpeciesList extends Component {
   render() {
     return(
       <div className='species-list'>
+        <ul ref='titles' className='titles'>
+          <li>Name</li>
+          <li>Origin</li>
+          <li>Attributes</li>
+          <li>Warp Capable</li>
+          <li>Sightings</li>
+        </ul>
         { this.renderSpeciesList() }
       </div>
     )

@@ -71,4 +71,14 @@ describe('SpeciesList', function() {
     expect(vulcan.props.onSightingsUpdate).to.equal(this.onSightingsUpdate)
     expect(vulcan.props.onRemove).to.equal(this.onRemove)
   })
+
+  it('renders column titles', function() {
+    let titles = this.speciesList.refs.titles
+    expect(titles).to.exist
+    expect(titles.innerHTML).to.contain('Name')
+    expect(titles.innerHTML).to.contain('Origin')
+    expect(titles.innerHTML).to.contain('Attributes')
+    expect(titles.innerHTML).to.contain('Warp Capable')
+    expect(titles.innerHTML).to.contain('Sightings')
+  })
 })
