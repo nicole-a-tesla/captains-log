@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Species from './species'
-import './species-list.css';
+import '../css/species-list.css';
 
 
 class SpeciesList extends Component {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import SpeciesContainer from './species-container'
+import SpeciesContainer from './js/species-container'
 
 
 class App extends Component {
