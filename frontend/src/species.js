@@ -19,9 +19,16 @@ class Species extends Component {
     this.setState({ sightings: e.target.value })
   }
 
+  handleRemoveClick(e) {
+    e.preventDefault()
+    this.props.onRemove(this.props.id)
+  }
+
   onSubmit(e) {
     e.preventDefault()
-    this.props.onSightingsUpdate(this.state.sightings)
+    this.props.onSightingsUpdate(
+      this.props.id, this.state.sightings
+    )
   }
 
   renderSightings() {
@@ -82,7 +89,7 @@ class Species extends Component {
         <button 
           className='button remove'
           ref='removeButton' 
-          onClick={ this.props.onRemove.bind(this) }>
+          onClick={ this.handleRemoveClick.bind(this) }>
             Remove
         </button>
       </div>

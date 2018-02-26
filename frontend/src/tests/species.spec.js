@@ -12,6 +12,7 @@ describe('Species', function() {
     let attributes = ['Shape shifting', 'telepathic']
     this.species = ReactTestUtils.renderIntoDocument(
        <Species 
+          id={ 'abc' }
           name={ 'Species Name' }
           origin={ 'Alpha' }
           attributes={ attributes }
@@ -79,6 +80,7 @@ describe('Species', function() {
     let spy = sinon.spy()
     let species = ReactTestUtils.renderIntoDocument(
        <Species 
+          id={ 'abc' }
           name={ 'Species Name' }
           origin={ 'Alpha' }
           attributes={ 'Shape Shifting' }
@@ -95,13 +97,14 @@ describe('Species', function() {
     let form = species.refs.editSightings
     ReactTestUtils.Simulate.submit(form)
 
-    expect(spy.calledWith(1)).to.equal(true);
+    expect(spy.calledWith('abc', 1)).to.equal(true);
   })
 
   it('calls remove callback on remove click', function() {
     let spy = sinon.spy()
     let species = ReactTestUtils.renderIntoDocument(
        <Species 
+          id={ 'abc' }
           name={ 'Species Name' }
           origin={ 'Alpha' }
           attributes={ 'Shape Shifting' }
@@ -115,7 +118,7 @@ describe('Species', function() {
     let removeButton = species.refs.removeButton
     ReactTestUtils.Simulate.click(removeButton)
 
-    expect(spy.called).to.equal(true);
+    expect(spy.calledWith('abc')).to.equal(true);
   })
 })
 
