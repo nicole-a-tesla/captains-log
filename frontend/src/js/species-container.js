@@ -1,11 +1,18 @@
 import React, { Component } from 'react'
 
 import SpeciesList from './species-list'
+import Search from './search'
+
+const style = {
+    margin: 12,
+};
 
 class SpeciesContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      searchFormValue: '',
+      searchResults: {},
       species: [
         {
           id: 'abc123',
@@ -33,9 +40,28 @@ class SpeciesContainer extends Component {
   onSightingsUpdate(speciesId, newSightingsCount) {
   }
 
+  updateSearchFormValue(e) {
+    this.setState({searchFormValue: e.target.value})
+  }
+
+  triggerSearch() {
+    fetch('http://localhost:8000/search/' + this.state.searchFormValue).then( 
+      (results) => results.json() 
+    ).then( 
+      (resultsJson) => {
+        this.setState({ searchResults: resultsJson['species'] })
+    })
+
+
+  }
+
   render() {
     return(
       <div>
+        <Search 
+          searchResults={ this.state.searchResults }
+          updateSearchFormValue={ this.updateSearchFormValue.bind(this) }
+          triggerSearch={ this.triggerSearch.bind(this) } />
         <SpeciesList 
           onRemove={ this.onRemove }
           onSightingsUpdate={ this.onSightingsUpdate }
