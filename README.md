@@ -1,4 +1,6 @@
-A great way for starfleet officers to track species sightings.
+*Extremely* in-progress.
+
+A way for starfleet officers to track species sightings.
 
 Not at all motivated by me starting to forget javascript. 
 
