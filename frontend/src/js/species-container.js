@@ -3,10 +3,6 @@ import React, { Component } from 'react'
 import SpeciesList from './species-list'
 import Search from './search'
 
-const style = {
-    margin: 12,
-};
-
 class SpeciesContainer extends Component {
   constructor(props) {
     super(props)
