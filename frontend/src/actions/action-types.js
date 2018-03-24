@@ -1,0 +1,1 @@
+export const SEARCH_FORM_VALUE_CHANGE  = 'search/UPDATE_SEARCH_FORM_VALUE';
