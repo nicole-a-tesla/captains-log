@@ -1,5 +1,9 @@
 import initialState from './initial-state';
-import { EDIT_SIGHTINGS_COUNT, INITIAL_SPECIES_LOAD } from '../actions/action-types';
+import { 
+  TOGGLE_EDIT_SIGHTINGS_COUNT, 
+  UPDATE_SIGHTINGS_COUNT,
+  INITIAL_SPECIES_LOAD 
+} from '../actions/action-types';
 
 export default (state=initialState.species, action) => {
   switch(action.type) {
@@ -7,10 +11,18 @@ export default (state=initialState.species, action) => {
     case INITIAL_SPECIES_LOAD: 
       return action.payload
 
-    case EDIT_SIGHTINGS_COUNT: 
+    case TOGGLE_EDIT_SIGHTINGS_COUNT: 
       return state.map((species) => {
         if (species.id === action.payload) {
-          species.editing = true
+          species.editing = !species.editing 
+        }
+        return species
+      })
+    
+    case UPDATE_SIGHTINGS_COUNT: 
+      return state.map((species) => {
+        if (species.id === action.payload.id) {
+          species.sightings = action.payload.sightings
         }
         return species
       })

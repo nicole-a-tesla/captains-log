@@ -41,9 +41,7 @@ class Species extends Component {
 
   onSubmit(e) {
     e.preventDefault()
-    this.props.onSightingsUpdate(
-      this.props.id, this.state.sightings
-    )
+    this.props.updateSightingsCount(this.props.id, this.state.sightings)
   }
 
   renderSightings() {

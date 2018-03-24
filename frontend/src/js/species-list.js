@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { loadSpecies, editSightingsCount } from '../actions/species-actions';
+import { 
+  loadSpecies, 
+  editSightingsCount, 
+  updateSightingsCount 
+} from '../actions/species-actions';
 
 import Species from './species'
 
@@ -45,7 +49,7 @@ class SpeciesList extends Component {
           editSightingsCount={ this.props.editSightingsCount }
           editing={ species.editing }
           onRemove={ this.props.onRemove }
-          onSightingsUpdate={ this.props.onSightingsUpdate } />
+          updateSightingsCount={ this.props.updateSightingsCount } />
       )
     }
     return speciesList
@@ -78,7 +82,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
   loadSpecies,
-  editSightingsCount
+  editSightingsCount,
+  updateSightingsCount
 }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps) (SpeciesList)
