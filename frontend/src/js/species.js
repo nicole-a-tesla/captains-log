@@ -25,13 +25,8 @@ class Species extends Component {
   constructor(props) {
     super(props)
     this.state = { 
-      editing: false ,
       sightings: this.props.sightings
     }
-  }
-
-  handleEditClick() {
-    this.setState({editing: true})
   }
 
   handleSightingsChange(e) {
@@ -52,7 +47,7 @@ class Species extends Component {
   }
 
   renderSightings() {
-    if (this.state.editing) {
+    if (this.props.editing) {
       return(
         <form 
           ref='editSightings' 
@@ -76,16 +71,19 @@ class Species extends Component {
         <RaisedButton
           label='Edit'
           ref='editButton' 
-          onClick={ this.handleEditClick.bind(this) } />
+          onClick={ () => this.props.editSightingsCount(this.props.id) } />
         </div>
     )
   }
 
   renderAttributes() {
+
     let listItems = []
-    for (let attribute of this.props.attributes) {
-      listItems.push(<li>{ attribute }</li>)
-    }
+
+    this.props.attributes.forEach((attribute, index) => {
+      listItems.push(<li key={index} >{ attribute }</li>)
+    })
+
     return(
       <ul>
         { listItems }
@@ -116,5 +114,4 @@ class Species extends Component {
   }
 }
 
-
-export default Species;
+export default Species

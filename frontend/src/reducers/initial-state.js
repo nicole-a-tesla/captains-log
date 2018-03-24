@@ -10,7 +10,8 @@ export default {
       origin: 'Unknown, Alpha Quadrant',
       attributes: ['humanoid'],
       warpCapable: 'false',
-      sightings: 2
+      sightings: 2,
+      editing: false
     },
     {
       id: 'xyz987',
@@ -18,6 +19,7 @@ export default {
       origin: 'Vulcan, Alpha Quadrant',
       warpCapable: 'true',
       attributes: ['humanoid','telepathic'],
-      sightings: 400
+      sightings: 400,
+      editing: false
     }]
-  }
+}

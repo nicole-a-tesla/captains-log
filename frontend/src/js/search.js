@@ -35,8 +35,8 @@ class Search extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    searchFormValue: state.search.searchFormValue,
-    searchResults: state.search.searchResults
+  searchFormValue: state.search.searchFormValue,
+  searchResults: state.search.searchResults
 })
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
