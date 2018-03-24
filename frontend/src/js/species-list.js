@@ -1,7 +1,23 @@
 import React, { Component } from 'react';
 
 import Species from './species'
-import '../css/species-list.css';
+import {
+  Table,
+  TableBody,
+  TableHeader,
+  TableHeaderColumn,
+  TableRow,
+} from 'material-ui/Table';
+
+const titlesStyle =  {
+  display: 'inline-flex',
+  listStyle: 'none'
+}
+
+const listStyle = {
+  marginLeft: 50,
+  marginRight: 50
+}
 
 
 class SpeciesList extends Component {
@@ -25,16 +41,21 @@ class SpeciesList extends Component {
 
   render() {
     return(
-      <div className='species-list'>
-        <ul ref='titles' className='titles'>
-          <li>Name</li>
-          <li>Origin</li>
-          <li>Attributes</li>
-          <li>Warp Capable</li>
-          <li>Sightings</li>
-        </ul>
-        { this.renderSpeciesList() }
-      </div>
+			<Table>
+				<TableHeader displaySelectAll={ false }>
+					<TableRow>
+						<TableHeaderColumn>Name</TableHeaderColumn>
+						<TableHeaderColumn>Origin</TableHeaderColumn>
+						<TableHeaderColumn>Warp Capable</TableHeaderColumn>
+						<TableHeaderColumn>Attributes</TableHeaderColumn>
+						<TableHeaderColumn>Sightings</TableHeaderColumn>
+						<TableHeaderColumn>Remove</TableHeaderColumn>
+					</TableRow>
+				</TableHeader>
+        <TableBody>
+          { this.renderSpeciesList() }
+        </TableBody>
+      </Table>
     )
   }
 }

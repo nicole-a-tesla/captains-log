@@ -1,5 +1,25 @@
 import React, { Component } from 'react';
-import '../css/species.css';
+import RaisedButton from 'material-ui/RaisedButton';
+import {
+  TableRow,
+  TableRowColumn,
+} from 'material-ui/Table';
+
+const nameStyle = {
+  marginLeft: 20
+}
+
+const sightingsStyle = {
+  display: 'inline-flex'
+}
+
+const editStyle = {
+}
+
+const pStyle = {
+  display: 'inline'
+}
+
 
 class Species extends Component {
   constructor(props) {
@@ -34,7 +54,6 @@ class Species extends Component {
   renderSightings() {
     if (this.state.editing) {
       return(
-      <div ref='sightings' className='sightings'>
         <form 
           ref='editSightings' 
           onSubmit={ this.onSubmit.bind(this) } >
@@ -48,21 +67,17 @@ class Species extends Component {
             ref='updateButton'
             type='submit' 
             value='update' />
-
         </form>
-      </div>
       )
     }
     return(
-      <div ref='sightings' className='sightings'>
+      <div style={{display: 'inline-flex'}}>
         <p ref='sightingsCount' >{ this.state.sightings }</p>
-        <button
-          className='button update' 
+        <RaisedButton
+          label='Edit'
           ref='editButton' 
-          onClick={ this.handleEditClick.bind(this) }>
-            Edit
-        </button>
-      </div>
+          onClick={ this.handleEditClick.bind(this) } />
+        </div>
     )
   }
 
@@ -80,19 +95,23 @@ class Species extends Component {
 
   render() {
     return(
-      <div ref='species' className='species'>
-        <div ref='speciesName' >{ this.props.name }</div>
-        <div ref='origin' >{ this.props.origin }</div>
-        <div ref='attributes' >{ this.renderAttributes() }</div>
-        <div ref='warpCapable' >{ this.props.warpCapable }</div>
-        { this.renderSightings() }
-        <button 
-          className='button remove'
-          ref='removeButton' 
-          onClick={ this.handleRemoveClick.bind(this) }>
-            Remove
-        </button>
-      </div>
+      <TableRow ref='species'>
+        <TableRowColumn style={nameStyle} >{ this.props.name }</TableRowColumn>
+        <TableRowColumn>{ this.props.origin }</TableRowColumn>
+        <TableRowColumn>{ this.props.warpCapable }</TableRowColumn>
+        <TableRowColumn>{ this.renderAttributes() }</TableRowColumn>
+        <TableRowColumn style={sightingsStyle} ref='sightings'>
+          { this.renderSightings() }
+        </TableRowColumn>
+        <TableRowColumn>
+          <RaisedButton
+            style={editStyle}
+            label='Remove'
+            className='button remove'
+            ref='removeButton' 
+            onClick={ this.handleRemoveClick.bind(this) } />
+        </TableRowColumn>
+      </TableRow>
     )
   }
 }
