@@ -5,7 +5,7 @@ import SearchResults from './search-results'
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { updateSearchFormValue } from '../actions/search-actions';
+import { updateSearchFormValue, triggerSearch } from '../actions/search-actions';
 
 const style = {
     margin: 12,
@@ -27,7 +27,7 @@ class Search extends Component {
           label='Search' 
           primary={ true } 
           style={ style } 
-          onClick={ this.props.triggerSearch.bind(this) } />
+          onClick={ () => this.props.triggerSearch(this.props.searchFormValue) } />
         <SearchResults results={ this.props.searchResults } />
       </div>
     )
@@ -36,11 +36,12 @@ class Search extends Component {
 
 const mapStateToProps = (state) => ({
     searchFormValue: state.search.searchFormValue,
-    // searchResults: state.search.s,
+    searchResults: state.search.searchResults
 })
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-  updateSearchFormValue
+  updateSearchFormValue,
+  triggerSearch
 }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps) (Search)

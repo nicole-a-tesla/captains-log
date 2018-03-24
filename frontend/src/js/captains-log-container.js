@@ -36,27 +36,10 @@ class CaptainsLogContainer extends Component {
   onSightingsUpdate(speciesId, newSightingsCount) {
   }
 
-  // updateSearchFormValue(e) {
-  //   this.setState({searchFormValue: e.target.value})
-  // }
-
-  triggerSearch() {
-    fetch('http://localhost:8000/search/' + this.state.searchFormValue).then( 
-      (results) => results.json() 
-    ).then( 
-      (resultsJson) => {
-        this.setState({ searchResults: resultsJson['species'] })
-    })
-
-
-  }
-
   render() {
     return(
       <div>
-        <Search 
-          searchResults={ this.state.searchResults }
-          triggerSearch={ this.triggerSearch.bind(this) } />
+        <Search />
         <SpeciesList 
           onRemove={ this.onRemove }
           onSightingsUpdate={ this.onSightingsUpdate }
@@ -67,4 +50,3 @@ class CaptainsLogContainer extends Component {
 }
 
 export default CaptainsLogContainer
-          // updateSearchFormValue={ this.updateSearchFormValue.bind(this) }
