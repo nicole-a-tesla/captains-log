@@ -3,35 +3,34 @@ import requests
 import json
 
 from backend import app
-from backend.models import db
+from backend.models import db, Species
 
 
-@app.route('/')
-def home():
-    return 'I WORK'
+@app.route('/search/<species_name>', methods=['GET'])
+def search(species_name):
+    endpoint = 'http://stapi.co/api/v1/rest/species/search'
+    headers = {'Content-Type': 'application/x-www-form-urlencoded'}
+    payload = {'name': species_name}
+
+    response = requests.post(endpoint, headers=headers, data=payload)
+
+    return Response(
+       response.text,
+       status=200,
+       mimetype='application/json'
+    )
 
 
-# @app.route('/stocks/', methods=['GET', 'POST'])
-# def stocks_list():
-#     stocks = Stock.query.all()
+@app.route('/species/', methods=['GET'])
+def species():
+    species = Species.query.all()
 
-#     if request.method == 'POST':
-#         content = json.loads(request.data)
-#         _create_new_stock(content)
-
-#     stocks = [
-#         _build_json(stock)
-#         for stock in Stock.query.all()
-#     ]
-
-#     return Response(
-#         json.dumps(stocks),
-#         status=200,
-#         mimetype='application/json'
-#     )
+    return Response(
+        json.dumps([s.serialize() for s in species]),
+        status=200,
+        mimetype='application/json'
+    )
 
 
 if __name__ == '__main__':
     app.run(debug=True,host='0.0.0.0')
-
-

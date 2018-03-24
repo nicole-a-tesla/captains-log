@@ -1,12 +1,18 @@
 import * as types from './action-types'
 import initialState from '../reducers/initial-state';
+import { adaptSpeciesList } from '../data-adapter'
 
 export const loadSpecies = () => {
   return (dispatch, getState) => {
-    dispatch({
-      type: types.INITIAL_SPECIES_LOAD,
-      payload: initialState.species
-    })
+    fetch('http://localhost:8000/species/')
+      .then((response) => response.json())
+        .then((resJson) => adaptSpeciesList(resJson))
+          .then((result) => {
+            dispatch({
+              type: types.INITIAL_SPECIES_LOAD,
+              payload: result
+            })
+          })
   }
 }
 
