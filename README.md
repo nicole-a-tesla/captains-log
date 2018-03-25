@@ -1,6 +1,6 @@
 *Extremely* in-progress.
 
-A way for starfleet officers to track species sightings.
+For starfleet officers to track species sightings.
 
 Not at all motivated by me starting to forget javascript. 
 
@@ -12,9 +12,4 @@ To run:
 docker-compose up --build
 ```
 
-To run frontend tests: 
-```
-docker-compose run frontend yarn test
-```
-
-Back end TBD 🚧  👾  
+Then go check out `localhost:8888`
