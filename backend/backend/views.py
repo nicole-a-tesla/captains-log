@@ -32,5 +32,23 @@ def species():
     )
 
 
+@app.route('/species/<species_id>/sightings/<sightings_count>', methods=['POST'])
+def update_sightings(species_id, sightings_count):
+
+    species = Species.query.get(species_id)
+    # species = db.session.query(Species).get(species_id)
+    species.sightings = sightings_count
+
+    db.session.add(species)
+    db.session.commit()
+
+    return Response(
+        json.dumps(species.serialize()),
+        status=200,
+        mimetype='application/json'
+    )
+
+
+
 if __name__ == '__main__':
     app.run(debug=True,host='0.0.0.0')

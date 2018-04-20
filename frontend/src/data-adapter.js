@@ -1,4 +1,4 @@
-export const adaptSpeciesList = (speciesList) => {
+export const adaptListFromBackend = (speciesList) => {
   return speciesList.map((speciesData) => {
     return adaptSpecies(speciesData)
   })
